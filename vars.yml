@@ -1,0 +1,12 @@
+---
+- name: Varible Demo
+  hosts: g1
+  become: yes
+  vars:
+    myusername : George Somina
+  tasks: 
+    - name: Update Dynamic page
+      template:
+        src: dynamic.j2
+        dest: /var/www/html/dynamic.html
+...
