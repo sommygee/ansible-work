@@ -3,9 +3,8 @@
   hosts: g1
   become: yes
   tasks: 
-    - name: update static page
+    - name: Update static page
       copy:
-        src: static.html.
+        src: static.html
         dest: /var/www/html/static.html
-    
 ...
