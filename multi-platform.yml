@@ -3,35 +3,21 @@
   hosts: g1
   become: yes
   tasks:
-    # Amazon Linux tasks
-    - name: Install httpd (Amazon Linux)
-      yum:
-        name: httpd
-        state: present
-      when: ansible_distribution == "Amazon"
-
-    - name: Start and enable httpd service (Amazon Linux)
-      service:
-        name: httpd
-        state: started
-        enabled: yes
-      when: ansible_distribution == "Amazon"
-
-    # Ubuntu tasks
-    - name: Update package list (Ubuntu)
+    # Debian and Ubuntu tasks
+    - name: Update package list (Ubuntu/Debian)
       apt:
         update_cache: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution in ["Ubuntu", "Debian"]
 
-    - name: Install Apache (Ubuntu)
+    - name: Install Apache (Ubuntu/Debian)
       apt:
         name: apache2
         state: present
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution in ["Ubuntu", "Debian"]
 
-    - name: Start and enable Apache service (Ubuntu)
+    - name: Start and enable Apache service (Ubuntu/Debian)
       service:
         name: apache2
         state: started
         enabled: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution in ["Ubuntu", "Debian"]
