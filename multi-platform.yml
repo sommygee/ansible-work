@@ -8,30 +8,31 @@
       yum:
         name: httpd
         state: present
-      when: ansible_distribution == "Amazon"
+      when: ansible_distribution == "Amazon" or ansible_distribution == "CentOS"
 
     - name: Start and enable httpd service (Amazon Linux)
       service:
         name: httpd
         state: started
         enabled: yes
-      when: ansible_distribution == "Amazon"
+      when: ansible_distribution == "Amazon" or ansible_distribution == "CentOS"
 
     # Ubuntu tasks
     - name: Update package list (Ubuntu)
       apt:
         update_cache: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
     - name: Install Apache (Ubuntu)
       apt:
         name: apache2
         state: present
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
     - name: Start and enable Apache service (Ubuntu)
       service:
         name: apache2
         state: started
         enabled: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+...
