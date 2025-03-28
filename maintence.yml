@@ -5,11 +5,7 @@
   tasks: 
     - name: update maintenance page
       copy:
-        scr: maintence.html
+        src: maintence.html
         dest: /var/www/html/index.html
-    - name: Clone code from GitHub
-      git:
-        repo: https://github.com/CeeyIT-Solutions/food3.git
-        dest: /var/www/html
-
+    
 ...
