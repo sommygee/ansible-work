@@ -10,7 +10,7 @@
 
     - name: Clone code from GitHub
       git:
-        repo: https://github.com/CeeyIT-Solution/ansible-work-5.git
+        repo: https://github.com/CeeyIT-Solution/ecomm-3.git
         dest: /var/www/html
         version: main   # Ensure it pulls from the main branch
 
