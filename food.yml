@@ -1,0 +1,16 @@
+---
+- name: Install Web App
+  hosts: n1
+  become: yes
+  tasks: 
+    - name: Install Git
+      yum:
+        name: git
+        state: present
+
+    - name: Clone code from GitHub
+      git:
+        repo: https://github.com/CeeyIT-Solutions/food3.git
+        dest: /var/www/html
+
+...
