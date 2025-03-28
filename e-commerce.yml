@@ -12,11 +12,4 @@
       git:
         repo: https://github.com/CeeyIT-Solutions/ecomm-3.git
         dest: /var/www/html
-        version: main   # Ensure it pulls from the main branch
-
-    - name: Restart Apache to apply changes
-      service:
-        name: httpd
-        state: restarted
-        enabled: yes
 ...
