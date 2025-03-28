@@ -1,5 +1,5 @@
 ---
-- name: install Web app
+- name: Install Web App
   hosts: n1
   become: yes
   tasks: 
@@ -8,8 +8,15 @@
         name: git
         state: present
 
-    - name: Most code from GitHub
+    - name: Clone code from GitHub
       git:
         repo: https://github.com/CeeyIT-Solution/ansible-work-5.git
-        dest: /var/www/html         
+        dest: /var/www/html
+        version: main   # Ensure it pulls from the main branch
+
+    - name: Restart Apache to apply changes
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes
 ...
