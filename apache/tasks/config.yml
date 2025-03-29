@@ -1,10 +1,4 @@
 ---
-- name: Ensure /var/www/html directory exists
-  file:
-    path: /var/www/html
-    state: directory
-    mode: '0755'
-
 - name: Update static page
   copy:
     src: static.html
