@@ -1,11 +1,18 @@
 ---
-    - name: Update static page
-      copy:
-        src: static.html
-        dest: /var/www/html/static.html
+- name: Ensure /var/www/html directory exists
+  file:
+    path: /var/www/html
+    state: directory
+    mode: '0755'
 
-    - name: Update Dynamic page
-      template:
-        src: dynamic.j2
-        dest: /var/www/html/dynamic.html
-...
+- name: Update static page
+  copy:
+    src: static.html
+    dest: /var/www/html/static.html
+  notify: Restart Apache
+
+- name: Update Dynamic page
+  template:
+    src: dynamic.j2
+    dest: /var/www/html/dynamic.html
+  notify: Restart Apache
